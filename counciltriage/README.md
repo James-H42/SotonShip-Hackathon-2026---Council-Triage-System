@@ -226,34 +226,71 @@ messy reports ("other", vague titles) and in judging urgency.
 
 ## Prioritisation: Incident Risk Priority Score
 
-`lib/triage/priority.ts` implements the team's formula. Each incident (a report plus everything
-merged into it) gets a 0-1 score, shown as 0-100.
+`lib/triage/priority.ts` implements the team's formula, adjusted after calibration.
 
-| Term | Meaning | Source |
+Every incident (a report plus everything merged into it) gets a score from 0 to 1, shown as
+0-100. The code is in `lib/triage/priority.ts`. Each term is stored with the report,
+and the officer's report page lists every term's points.
+
+**Inputs (each from 0 to 1)**
+
+| Term | Formula | Where it comes from |
 | --- | --- | --- |
-| S' | text severity | LLM urgency, (u-1)/4. Never below what the resident's form answers imply (urgent depth, hazardous waste, exposed wiring and so on) |
-| St' | image severity | vision `severity_score`, only if uncertainty ≤ 0.7 and the photo is on-topic |
-| sev | max(S', St') | S' alone when there is no usable photo |
-| p, λ | p = 0.5^(d / 100 m), λ = p × sev | d = distance to the nearest key road from the map team's overlay (motorway, trunk, primary) |
-| i' | i / (i + k), k = 2 | i = injuries per week across the merged incident |
-| c | (v + 0.5) / (n + 1) | v = reports mentioning vulnerable people, n = reports in the incident |
-| r | 1 - 0.5^((n-1)/2) | corroboration by duplicate reports |
+| **S′**: text severity | max(LLM urgency → (u − 1) / 4, form severity, highest S′ in the merged incident) | `u` is the LLM's urgency from 1 to 5 (the keyword baseline's severity if the LLM is down). Form severity is the points from the resident's answers ÷ 35, capped at 1 (for example, exposed wiring is 35 points and an urgent pothole depth 30). It is at least 0.75 for "Immediate danger" and 0.5 for "Could cause injury or damage". |
+| **St′**: image severity | the image model's `severity_score` | Used only if the photo's uncertainty is ≤ 0.7 and its category matches the report (or is a related one). Otherwise the best usable photo in the merged incident; if there is none, there is no image term. |
+| **sev** | max(S′, St′) | S′ alone when there is no usable photo |
+| **p**: road proximity | 0.5^(d / 100) | `d` = metres to the nearest key road (motorway, trunk or primary, from OpenStreetMap). The impact halves every 100 m. |
+| **λ**: road impact | p × sev | A severe problem on a busy road |
+| **i′**: injuries | i / (i + 2) | `i` = injuries per week. For a single report, 1 if an injury was reported, otherwise 0. For a merged incident, injured reports in the last 8 weeks ÷ the weeks since the first of them (at least 1 week). |
+| **c**: vulnerable people | (v + 0.5) / (n + 1) | `v` = reports mentioning vulnerable people, `n` = reports in the incident |
+| **r**: corroboration | 1 − 0.5^((n − 1) / 2) | `n` = reports in the incident, counting merged reports and residents who confirmed it is the same problem (max(merged reports, 1 + supporters)) |
+
+**Weighted sum** (the weights sum to 1 in both cases):
 
 ```
-with a usable photo:  score = 0.15 S' + 0.20 St' + 0.30 λ + 0.15 i' + 0.10 c + 0.10 r
-text only:            score = 0.35 S'            + 0.30 λ + 0.15 i' + 0.10 c + 0.10 r
-override:             sev > 0.9  → critical, regardless of score
+with a usable photo:  score = 0.15·S′ + 0.20·St′ + 0.30·λ + 0.15·i′ + 0.10·c + 0.10·r
+text only:            score = 0.35·S′            + 0.30·λ + 0.15·i′ + 0.10·c + 0.10·r
 ```
 
-The bands are critical ≥ 60 (the formula's suggested 0.6 alert cut-off), high ≥ 45, medium ≥ 30,
-and low otherwise. The council pothole policy still applies on top: an urgent depth is always
-critical, and a depth below the intervention level is "monitor". Dubious reports are multiplied by
-0.6. Every term is stored, and the officer report page shows the breakdown.
+**Adjustments, applied in this order** (in step 3, only the first rule that applies is used, in the order listed)
+
+1. Flagged as possibly dubious: score × 0.6. The photo shows no problem: score × 0.8.
+2. The score is capped at 1 and multiplied by 100.
+3. Rules that override the score:
+   - **Escalation:** if sev > 0.9, or a pothole is deeper than the council's urgent intervention
+     depth, the score becomes at least 60 and the band critical (within 24 hours).
+   - **Injury floor:** if someone was hurt (i > 0), the report is not dubious and the score is below
+     45, it is raised to 45 (high). A higher score keeps its band.
+   - **Pothole below the intervention depth:** the score is capped at 25 and the band is "monitor"
+     (council policy), unless an officer has flagged it.
+   - **Officer override:** an officer can set the score directly. Their score always wins.
+
+**Bands and response targets**
+
+| Band | Score | Response target |
+| --- | --- | --- |
+| Critical | ≥ 60 | Within 24 hours |
+| High | 45-59 | Within 5 working days |
+| Medium | 30-44 | Within 28 days (standard-depth potholes: within 6 months) |
+| Low | < 30 | Within 3 months (standard-depth potholes: within 6 months) |
+| Monitor | potholes below the intervention depth | Monitored only |
+
+**Worked examples (real reports from the demo data)**
+
+- *FMS9815538* (photo, 15 m from a key road): S′ = 0.5, St′ = 0.436, sev = 0.5, p = 0.5^(15/100) = 0.901,
+  λ = 0.451, i′ = 0, c = (0 + 0.5)/(1 + 1) = 0.25, r = 0.
+  Score = 0.15·0.5 + 0.20·0.436 + 0.30·0.451 + 0.10·0.25 = 0.322, so **32, medium**.
+- *SYN900001*, the Westgate Street light (no photo, a merged incident of n = 4 reports, 52 m from a key road):
+  S′ = 1.0 (urgency 5), p = 0.697, λ = 0.697, i = 0.35/week so i′ = 0.149,
+  c = (1 + 0.5)/(4 + 1) = 0.30, r = 1 − 0.5^1.5 = 0.646.
+  Score = 0.35·1 + 0.30·0.697 + 0.15·0.149 + 0.10·0.30 + 0.10·0.646 = 0.676, so **68, critical**
+  (sev = 1.0 > 0.9 also escalates it).
 
 **Changes from the original formula, and why:**
 1. **Text weight 0.05 → 0.15 (0.35 with no photo), image weight 0.325 → 0.20.** Under the original,
    a resident's description barely counted, while most reports (36 of 40 real open ones) have no
-   usable photo. The image model is also the less reliable signal on real photos (61%).
+   usable photo. The image model is also the less reliable signal on real photos (77% for the
+   ensemble on 83 real photos; see Benchmarks).
 2. **A separate text-only weighting.** The weights still sum to 1, so reports without photos are not
    capped lower than reports with them. This is the "with and without images" requirement.
 3. **c is redefined.** The original c = (v+0.5)/(i+1) treats vulnerability as a share of injuries,

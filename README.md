@@ -22,10 +22,11 @@ Everything runs on a council laptop, so no report data is sent to a cloud AI ser
 3. [Data sources](#data-sources)
 4. [Training data for the image model (credits)](#training-data-for-the-image-model-credits)
 5. [What the AI does](#what-the-ai-does)
-6. [Tests and benchmarks](#tests-and-benchmarks)
-7. [Limits](#limits)
-8. [Privacy and security](#privacy-and-security)
-9. [Credits for models, data and software](#credits-for-models-data-and-software)
+6. [How reports are prioritised (the formula)](#how-reports-are-prioritised-the-formula)
+7. [Tests and benchmarks](#tests-and-benchmarks)
+8. [Limits](#limits)
+9. [Privacy and security](#privacy-and-security)
+10. [Credits for models, data and software](#credits-for-models-data-and-software)
 
 ---
 
@@ -192,12 +193,77 @@ Everything below runs locally. The AI suggests; council rules and officers decid
    - the number of reports.
 
    Every factor is listed on the report page. Council policy (for example pothole depth rules) and
-   officer overrides always win over the model.
+   officer overrides always win over the model. The full formula is
+   [below](#how-reports-are-prioritised-the-formula).
 5. **Plans repairs.**
    - Two-person crews get up to five jobs each. The jobs are chosen for the most priority per
      minute of driving (using straight-line distance).
    - Every visiting order is then checked on real road driving times (OSRM on OpenStreetMap).
    - The route is drawn along the roads, with the straight line dashed.
+
+---
+
+## How reports are prioritised (the formula)
+
+The **Incident Risk Priority Score**.
+
+Every incident (a report plus everything merged into it) gets a score from 0 to 1, shown as
+0-100. The code is in `counciltriage/lib/triage/priority.ts`. Each term is stored with the report,
+and the officer's report page lists every term's points.
+
+**Inputs (each from 0 to 1)**
+
+| Term | Formula | Where it comes from |
+| --- | --- | --- |
+| **S′**: text severity | max(LLM urgency → (u − 1) / 4, form severity, highest S′ in the merged incident) | `u` is the LLM's urgency from 1 to 5 (the keyword baseline's severity if the LLM is down). Form severity is the points from the resident's answers ÷ 35, capped at 1 (for example, exposed wiring is 35 points and an urgent pothole depth 30). It is at least 0.75 for "Immediate danger" and 0.5 for "Could cause injury or damage". |
+| **St′**: image severity | the image model's `severity_score` | Used only if the photo's uncertainty is ≤ 0.7 and its category matches the report (or is a related one). Otherwise the best usable photo in the merged incident; if there is none, there is no image term. |
+| **sev** | max(S′, St′) | S′ alone when there is no usable photo |
+| **p**: road proximity | 0.5^(d / 100) | `d` = metres to the nearest key road (motorway, trunk or primary, from OpenStreetMap). The impact halves every 100 m. |
+| **λ**: road impact | p × sev | A severe problem on a busy road |
+| **i′**: injuries | i / (i + 2) | `i` = injuries per week. For a single report, 1 if an injury was reported, otherwise 0. For a merged incident, injured reports in the last 8 weeks ÷ the weeks since the first of them (at least 1 week). |
+| **c**: vulnerable people | (v + 0.5) / (n + 1) | `v` = reports mentioning vulnerable people, `n` = reports in the incident |
+| **r**: corroboration | 1 − 0.5^((n − 1) / 2) | `n` = reports in the incident, counting merged reports and residents who confirmed it is the same problem (max(merged reports, 1 + supporters)) |
+
+**Weighted sum** (the weights sum to 1 in both cases):
+
+```
+with a usable photo:  score = 0.15·S′ + 0.20·St′ + 0.30·λ + 0.15·i′ + 0.10·c + 0.10·r
+text only:            score = 0.35·S′            + 0.30·λ + 0.15·i′ + 0.10·c + 0.10·r
+```
+
+**Adjustments, applied in this order** (in step 3, only the first rule that applies is used, in the order listed)
+
+1. Flagged as possibly dubious: score × 0.6. The photo shows no problem: score × 0.8.
+2. The score is capped at 1 and multiplied by 100.
+3. Rules that override the score:
+   - **Escalation:** if sev > 0.9, or a pothole is deeper than the council's urgent intervention
+     depth, the score becomes at least 60 and the band critical (within 24 hours).
+   - **Injury floor:** if someone was hurt (i > 0), the report is not dubious and the score is below
+     45, it is raised to 45 (high). A higher score keeps its band.
+   - **Pothole below the intervention depth:** the score is capped at 25 and the band is "monitor"
+     (council policy), unless an officer has flagged it.
+   - **Officer override:** an officer can set the score directly. Their score always wins.
+
+**Bands and response targets**
+
+| Band | Score | Response target |
+| --- | --- | --- |
+| Critical | ≥ 60 | Within 24 hours |
+| High | 45-59 | Within 5 working days |
+| Medium | 30-44 | Within 28 days (standard-depth potholes: within 6 months) |
+| Low | < 30 | Within 3 months (standard-depth potholes: within 6 months) |
+| Monitor | potholes below the intervention depth | Monitored only |
+
+**Worked examples (real reports from the demo data)**
+
+- *FMS9815538* (photo, 15 m from a key road): S′ = 0.5, St′ = 0.436, sev = 0.5, p = 0.5^(15/100) = 0.901,
+  λ = 0.451, i′ = 0, c = (0 + 0.5)/(1 + 1) = 0.25, r = 0.
+  Score = 0.15·0.5 + 0.20·0.436 + 0.30·0.451 + 0.10·0.25 = 0.322, so **32, medium**.
+- *SYN900001*, the Westgate Street light (no photo, a merged incident of n = 4 reports, 52 m from a key road):
+  S′ = 1.0 (urgency 5), p = 0.697, λ = 0.697, i = 0.35/week so i′ = 0.149,
+  c = (1 + 0.5)/(4 + 1) = 0.30, r = 1 − 0.5^1.5 = 0.646.
+  Score = 0.35·1 + 0.30·0.697 + 0.15·0.149 + 0.10·0.30 + 0.10·0.646 = 0.676, so **68, critical**
+  (sev = 1.0 > 0.9 also escalates it).
 
 ---
 
