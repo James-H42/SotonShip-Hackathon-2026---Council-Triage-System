@@ -5,8 +5,9 @@
  *   PLAYWRIGHT_DIR=/path/with/node_modules/playwright node scripts/record-demo.mjs
  *
  * Playwright drives Chromium with a visible cursor, click ripples, a caption bar and highlight
- * boxes. There is no voice-over and no title or end card: each scene stays on screen long
- * enough to read its caption. Writes docs/StreetTriage-demo.mp4 (silent).
+ * boxes. There is no title or end card: each scene stays on screen long enough to read its
+ * caption. Writes a silent docs/StreetTriage-demo.mp4; scripts/narrate-demo.py then adds the
+ * English voice-over that reads each caption.
  * Demo logins come from .secrets/demo-accounts.json.
  */
 import { execFileSync } from "node:child_process";

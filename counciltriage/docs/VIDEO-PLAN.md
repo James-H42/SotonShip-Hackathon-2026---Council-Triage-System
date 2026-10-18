@@ -1,8 +1,9 @@
 # Demo video: plan
 
 Recorded automatically by `scripts/record-demo.mjs` against a freshly reset demo (`npm run demo`).
-The video is **silent** (no voice-over) and has **no title or end card**. A caption bar explains
-each step, orange boxes show where to look, and a visible cursor shows each click.
+The video has **no title or end card**. A caption bar explains each step, an English (UK)
+voice-over reads each caption as it appears, orange boxes show where to look, and a visible cursor
+shows each click.
 Output: `docs/StreetTriage-demo.mp4`.
 
 ## Who is watching and what they must take away
@@ -50,4 +51,6 @@ Hackathon judges who have not seen the app. They should understand:
 2. `PLAYWRIGHT_DIR=<dir with playwright> node scripts/record-demo.mjs`.
 3. Restore: stop the server, `mv data/clean.db data/counciltriage.db`, remove `-wal`/`-shm`,
    then `npm run start -- -p 3100`.
-4. Watch it through (extract frames with ffmpeg) and check each caption matches the screen.
+4. Add the voice-over: `python3 scripts/narrate-demo.py <silent video> docs/StreetTriage-demo.mp4`.
+   If the recording changes, re-measure the caption times in the script's `LINES`.
+5. Watch it through (extract frames with ffmpeg) and check each caption matches the screen and the voice.

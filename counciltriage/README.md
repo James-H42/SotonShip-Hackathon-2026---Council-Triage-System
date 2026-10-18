@@ -492,7 +492,8 @@ wrong answer.
 - **Road routing:** crew routes follow real roads (OSRM on OpenStreetMap), with the straight line
   still drawn and still used to choose the jobs. See [Route planning](#route-planning).
 - **Video and summary:** [`docs/VIDEO-PLAN.md`](docs/VIDEO-PLAN.md), `docs/StreetTriage-demo.mp4`
-  (silent, with captions, recorded by `scripts/record-demo.mjs`), and the 150-word summary in
+  (captions plus an English voice-over; recorded by `scripts/record-demo.mjs` and narrated by
+  `scripts/narrate-demo.py`), and the 150-word summary in
   [`docs/SUMMARY-150.md`](docs/SUMMARY-150.md).
 
 ## Libraries, models and services
