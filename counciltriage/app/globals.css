@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+/*
+ * Southampton City Council palette (taken from southampton.gov.uk's stylesheet).
+ * See public/brand/README.md.
+ */
+:root {
+  color-scheme: light;
+  --background: #f4f5f2;
+  --foreground: #0b1726;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --font-display: var(--font-franklin), "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  /* Council brand */
+  --color-scc-navy: #00193c;
+  --color-scc-navy-2: #1e3363;
+  --color-scc-navy-3: #002e6f;
+  --color-scc-magenta: #dc0050;
+  --color-scc-magenta-dark: #a9003d;
+  --color-scc-blue: #2f73ad;
+  --color-scc-sand: #f1f2f0;
+  --color-scc-stone: #c2bdb6;
+  --color-scc-focus: #ffbf47;
+  --color-scc-green: #2a8a3a;
+
+  /* Semantic aliases used across components */
+  --color-brand-50: #eef2f8;
+  --color-brand-100: #d6dfec;
+  --color-brand-500: #2f73ad;
+  --color-brand-600: #00193c;
+  --color-brand-700: #1e3363;
+  --color-brand-900: #00193c;
+
+  --color-console-950: #000f26;
+  --color-console-900: #00193c;
+  --color-console-800: #1e3363;
+
+  /* Priority bands (text colours meet WCAG AA on their tints) */
+  --color-critical: #b42318;
+  --color-critical-bg: #fef3f2;
+  --color-high: #c4320a;
+  --color-high-bg: #fff4ed;
+  --color-medium: #8a5300;
+  --color-medium-bg: #fffaeb;
+  --color-low: #175cd3;
+  --color-low-bg: #eff8ff;
+  --color-monitor: #475467;
+  --color-monitor-bg: #f2f4f7;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+/* Council-style visible keyboard focus */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--color-scc-focus);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white;
+  }
+}

@@ -1,0 +1,503 @@
+{
+ "_note": "Hand-labelled by looking at each FixMyStreet photo (18 Oct 2026). Classes: the model's five (pothole, fly_tipping, litter, graffiti, broken_lights) plus road_damage (adjacent to pothole), bus_shelter (adjacent to graffiti/vandalism), other (out of scope), not_a_photo.",
+ "photos": [
+  {
+   "n": 0,
+   "file": "10009043.jpeg",
+   "fms_category": "road_pavement_damage",
+   "label": "litter"
+  },
+  {
+   "n": 1,
+   "file": "10044070.jpeg",
+   "fms_category": "road_pavement_damage",
+   "label": "litter"
+  },
+  {
+   "n": 2,
+   "file": "10054415.jpeg",
+   "fms_category": "road_pavement_damage",
+   "label": "road_damage"
+  },
+  {
+   "n": 3,
+   "file": "10095327.jpeg",
+   "fms_category": "other",
+   "label": "other"
+  },
+  {
+   "n": 4,
+   "file": "10139294.jpeg",
+   "fms_category": "other",
+   "label": "other"
+  },
+  {
+   "n": 5,
+   "file": "10152922.jpeg",
+   "fms_category": "road_pavement_damage",
+   "label": "other"
+  },
+  {
+   "n": 6,
+   "file": "10153002.jpeg",
+   "fms_category": "road_pavement_damage",
+   "label": "road_damage"
+  },
+  {
+   "n": 7,
+   "file": "10153011.jpeg",
+   "fms_category": "road_pavement_damage",
+   "label": "not_a_photo"
+  },
+  {
+   "n": 8,
+   "file": "10184654.jpeg",
+   "fms_category": "road_pavement_damage",
+   "label": "road_damage"
+  },
+  {
+   "n": 9,
+   "file": "10201596.jpeg",
+   "fms_category": "other",
+   "label": "other"
+  },
+  {
+   "n": 10,
+   "file": "5497724.jpeg",
+   "fms_category": "road_pavement_damage",
+   "label": "other"
+  },
+  {
+   "n": 11,
+   "file": "5503344.jpeg",
+   "fms_category": "fly_tipping",
+   "label": "fly_tipping"
+  },
+  {
+   "n": 12,
+   "file": "5590868.jpeg",
+   "fms_category": "pothole",
+   "label": "pothole"
+  },
+  {
+   "n": 13,
+   "file": "5678169.jpeg",
+   "fms_category": "pothole",
+   "label": "pothole"
+  },
+  {
+   "n": 14,
+   "file": "5736484.jpeg",
+   "fms_category": "pothole",
+   "label": "pothole"
+  },
+  {
+   "n": 15,
+   "file": "5838625.jpeg",
+   "fms_category": "pothole",
+   "label": "pothole"
+  },
+  {
+   "n": 16,
+   "file": "6133395.jpeg",
+   "fms_category": "pothole",
+   "label": "pothole"
+  },
+  {
+   "n": 17,
+   "file": "6221483.jpeg",
+   "fms_category": "pothole",
+   "label": "pothole"
+  },
+  {
+   "n": 18,
+   "file": "6296894.jpeg",
+   "fms_category": "fly_tipping",
+   "label": "fly_tipping"
+  },
+  {
+   "n": 19,
+   "file": "6296906.jpeg",
+   "fms_category": "pothole",
+   "label": "pothole"
+  },
+  {
+   "n": 20,
+   "file": "6391850.jpeg",
+   "fms_category": "road_pavement_damage",
+   "label": "road_damage"
+  },
+  {
+   "n": 21,
+   "file": "6652376.jpeg",
+   "fms_category": "road_pavement_damage",
+   "label": "road_damage"
+  },
+  {
+   "n": 22,
+   "file": "6652383.jpeg",
+   "fms_category": "road_pavement_damage",
+   "label": "road_damage"
+  },
+  {
+   "n": 23,
+   "file": "6667290.jpeg",
+   "fms_category": "fly_tipping",
+   "label": "other"
+  },
+  {
+   "n": 24,
+   "file": "6937407.jpeg",
+   "fms_category": "fly_tipping",
+   "label": "fly_tipping"
+  },
+  {
+   "n": 25,
+   "file": "6937883.jpeg",
+   "fms_category": "road_pavement_damage",
+   "label": "other"
+  },
+  {
+   "n": 26,
+   "file": "7101063.jpeg",
+   "fms_category": "fly_tipping",
+   "label": "fly_tipping"
+  },
+  {
+   "n": 27,
+   "file": "7179531.jpeg",
+   "fms_category": "fly_tipping",
+   "label": "fly_tipping"
+  },
+  {
+   "n": 28,
+   "file": "7191586.jpeg",
+   "fms_category": "fly_tipping",
+   "label": "fly_tipping"
+  },
+  {
+   "n": 29,
+   "file": "7317896.jpeg",
+   "fms_category": "pothole",
+   "label": "not_a_photo"
+  },
+  {
+   "n": 30,
+   "file": "7391663.jpeg",
+   "fms_category": "fly_tipping",
+   "label": "fly_tipping"
+  },
+  {
+   "n": 31,
+   "file": "7616109.jpeg",
+   "fms_category": "road_pavement_damage",
+   "label": "road_damage"
+  },
+  {
+   "n": 32,
+   "file": "7682082.jpeg",
+   "fms_category": "litter",
+   "label": "litter"
+  },
+  {
+   "n": 33,
+   "file": "7860691.jpeg",
+   "fms_category": "road_pavement_damage",
+   "label": "other"
+  },
+  {
+   "n": 34,
+   "file": "7875523.jpeg",
+   "fms_category": "fly_tipping",
+   "label": "fly_tipping"
+  },
+  {
+   "n": 35,
+   "file": "7880821.jpeg",
+   "fms_category": "road_pavement_damage",
+   "label": "other"
+  },
+  {
+   "n": 36,
+   "file": "7890450.jpeg",
+   "fms_category": "road_pavement_damage",
+   "label": "road_damage"
+  },
+  {
+   "n": 37,
+   "file": "7954984.jpeg",
+   "fms_category": "road_pavement_damage",
+   "label": "litter"
+  },
+  {
+   "n": 38,
+   "file": "7956079.jpeg",
+   "fms_category": "road_pavement_damage",
+   "label": "other"
+  },
+  {
+   "n": 39,
+   "file": "7968136.jpeg",
+   "fms_category": "fly_tipping",
+   "label": "other"
+  },
+  {
+   "n": 40,
+   "file": "7994870.jpeg",
+   "fms_category": "fly_tipping",
+   "label": "other"
+  },
+  {
+   "n": 41,
+   "file": "8059189.jpeg",
+   "fms_category": "vandalism",
+   "label": "graffiti"
+  },
+  {
+   "n": 42,
+   "file": "8125176.jpeg",
+   "fms_category": "road_pavement_damage",
+   "label": "road_damage"
+  },
+  {
+   "n": 43,
+   "file": "8159475.jpeg",
+   "fms_category": "vandalism",
+   "label": "graffiti"
+  },
+  {
+   "n": 44,
+   "file": "8228476.jpeg",
+   "fms_category": "vandalism",
+   "label": "graffiti"
+  },
+  {
+   "n": 45,
+   "file": "8259538.jpeg",
+   "fms_category": "litter",
+   "label": "litter"
+  },
+  {
+   "n": 46,
+   "file": "8313921.jpeg",
+   "fms_category": "bus_shelter",
+   "label": "bus_shelter"
+  },
+  {
+   "n": 47,
+   "file": "8505950.jpeg",
+   "fms_category": "pothole",
+   "label": "pothole"
+  },
+  {
+   "n": 48,
+   "file": "8662193.jpeg",
+   "fms_category": "road_pavement_damage",
+   "label": "road_damage"
+  },
+  {
+   "n": 49,
+   "file": "8664163.jpeg",
+   "fms_category": "road_pavement_damage",
+   "label": "road_damage"
+  },
+  {
+   "n": 50,
+   "file": "8664166.jpeg",
+   "fms_category": "road_pavement_damage",
+   "label": "other"
+  },
+  {
+   "n": 51,
+   "file": "8664171.jpeg",
+   "fms_category": "road_pavement_damage",
+   "label": "road_damage"
+  },
+  {
+   "n": 52,
+   "file": "8702532.jpeg",
+   "fms_category": "pothole",
+   "label": "other"
+  },
+  {
+   "n": 53,
+   "file": "8818967.jpeg",
+   "fms_category": "other",
+   "label": "other"
+  },
+  {
+   "n": 54,
+   "file": "8970416.jpeg",
+   "fms_category": "other",
+   "label": "other"
+  },
+  {
+   "n": 55,
+   "file": "9017331.jpeg",
+   "fms_category": "pothole",
+   "label": "pothole"
+  },
+  {
+   "n": 56,
+   "file": "9041091.jpeg",
+   "fms_category": "other",
+   "label": "not_a_photo"
+  },
+  {
+   "n": 57,
+   "file": "9096476.jpeg",
+   "fms_category": "fly_tipping",
+   "label": "fly_tipping"
+  },
+  {
+   "n": 58,
+   "file": "9163417.jpeg",
+   "fms_category": "pothole",
+   "label": "pothole"
+  },
+  {
+   "n": 59,
+   "file": "9241311.jpeg",
+   "fms_category": "other",
+   "label": "other"
+  },
+  {
+   "n": 60,
+   "file": "9279274.jpeg",
+   "fms_category": "fly_tipping",
+   "label": "fly_tipping"
+  },
+  {
+   "n": 61,
+   "file": "9288771.jpeg",
+   "fms_category": "other",
+   "label": "other"
+  },
+  {
+   "n": 62,
+   "file": "9292250.jpeg",
+   "fms_category": "other",
+   "label": "other"
+  },
+  {
+   "n": 63,
+   "file": "9302652.jpeg",
+   "fms_category": "other",
+   "label": "other"
+  },
+  {
+   "n": 64,
+   "file": "9312330.jpeg",
+   "fms_category": "other",
+   "label": "fly_tipping"
+  },
+  {
+   "n": 65,
+   "file": "9340816.jpeg",
+   "fms_category": "other",
+   "label": "other"
+  },
+  {
+   "n": 66,
+   "file": "9388348.jpeg",
+   "fms_category": "other",
+   "label": "other"
+  },
+  {
+   "n": 67,
+   "file": "9481414.jpeg",
+   "fms_category": "fly_tipping",
+   "label": "other"
+  },
+  {
+   "n": 68,
+   "file": "9510536.jpeg",
+   "fms_category": "fly_tipping",
+   "label": "fly_tipping"
+  },
+  {
+   "n": 69,
+   "file": "9510796.jpeg",
+   "fms_category": "other",
+   "label": "other"
+  },
+  {
+   "n": 70,
+   "file": "9590078.jpeg",
+   "fms_category": "other",
+   "label": "other"
+  },
+  {
+   "n": 71,
+   "file": "9593609.jpeg",
+   "fms_category": "litter",
+   "label": "other"
+  },
+  {
+   "n": 72,
+   "file": "9654921.jpeg",
+   "fms_category": "other",
+   "label": "other"
+  },
+  {
+   "n": 73,
+   "file": "9658382.jpeg",
+   "fms_category": "pothole",
+   "label": "pothole"
+  },
+  {
+   "n": 74,
+   "file": "9677459.jpeg",
+   "fms_category": "other",
+   "label": "other"
+  },
+  {
+   "n": 75,
+   "file": "9724739.jpeg",
+   "fms_category": "other",
+   "label": "other"
+  },
+  {
+   "n": 76,
+   "file": "9793559.jpeg",
+   "fms_category": "road_pavement_damage",
+   "label": "road_damage"
+  },
+  {
+   "n": 77,
+   "file": "9810277.jpeg",
+   "fms_category": "fly_tipping",
+   "label": "fly_tipping"
+  },
+  {
+   "n": 78,
+   "file": "9815538.jpeg",
+   "fms_category": "pothole",
+   "label": "pothole"
+  },
+  {
+   "n": 79,
+   "file": "9952396.jpeg",
+   "fms_category": "other",
+   "label": "fly_tipping"
+  },
+  {
+   "n": 80,
+   "file": "9953664.jpeg",
+   "fms_category": "road_pavement_damage",
+   "label": "other"
+  },
+  {
+   "n": 81,
+   "file": "9959060.jpeg",
+   "fms_category": "other",
+   "label": "other"
+  },
+  {
+   "n": 82,
+   "file": "9991436.jpeg",
+   "fms_category": "litter",
+   "label": "other"
+  }
+ ]
+}

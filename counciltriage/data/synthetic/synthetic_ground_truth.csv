@@ -1,0 +1,41 @@
+id,expected_entity,scenario,expected_category,expected_injury,expected_vulnerable,expected_urgency,why_it_is_interesting
+900001,E1,"Westgate Street lamp cluster (5 reports, 1 entity)",Street lighting,0,1,4,vulnerable people at risk
+900002,E1,"Westgate Street lamp cluster (5 reports, 1 entity)",Street lighting,0,0,3,dropdown says other
+900003,E1,"Westgate Street lamp cluster (5 reports, 1 entity)",Street lighting,0,0,4,"two problems; 'going to fall' is risk, NOT an injury"
+900004,E1,"Westgate Street lamp cluster (5 reports, 1 entity)",Street lighting,1,0,4,actual injury + chasing a previous report
+900005,E1,"Westgate Street lamp cluster (5 reports, 1 entity)",Street lighting,0,0,3,repeat complaint
+900006,E2,"Westgate Street pavement (same spot, DIFFERENT category: must not merge with the lamp)",Pavements and footpaths,0,0,3,"same place as the lamp, different issue"
+900007,E2,"Westgate Street pavement (same spot, DIFFERENT category: must not merge with the lamp)",Pavements and footpaths,0,1,4,vulnerable person from indirect wording
+900008,E3,"Bitterne Road pothole (main road, injury)",Potholes,0,0,4,busy road
+900009,E3,"Bitterne Road pothole (main road, injury)",Potholes,1,0,4,cyclist injured
+900010,E3,"Bitterne Road pothole (main road, injury)",Potholes,0,0,3,vehicle damage is not injury
+900011,E3,"Bitterne Road pothole (main road, injury)",Potholes,0,0,4,shouting; no injury actually stated
+900012,E4,"Residential pothole (low urgency contrast, not on a main road)",Potholes,0,0,2,"minor, residential"
+900013,E5,"Portswood alley fly-tipping (6 reports, big cluster)",Fly-tipping,0,0,2,volume of reports
+900014,E5,"Portswood alley fly-tipping (6 reports, big cluster)",Fly-tipping,0,0,3,health risk
+900015,E5,"Portswood alley fly-tipping (6 reports, big cluster)",Fly-tipping,0,0,2,repeat
+900016,E5,"Portswood alley fly-tipping (6 reports, big cluster)",Fly-tipping,0,0,2,duplicate
+900017,E5,"Portswood alley fly-tipping (6 reports, big cluster)",Fly-tipping,0,1,3,children; dropdown differs
+900018,E5,"Portswood alley fly-tipping (6 reports, big cluster)",Fly-tipping,0,0,2,"short, repeat"
+900019,E6,Above Bar graffiti (low urgency),Graffiti,0,0,2,offensive content
+900020,E6,Above Bar graffiti (low urgency),Graffiti,0,0,1,cosmetic
+900021,E7,Bassett Avenue fallen tree (urgency 5),Trees and vegetation,0,1,5,children + road blocked
+900022,E7,Bassett Avenue fallen tree (urgency 5),Trees and vegetation,0,0,5,no vulnerable group stated
+900023,E8,Millbrook Road flooding (3 reports),Drainage and flooding,0,1,4,elderly affected
+900024,E8,Millbrook Road flooding (3 reports),Drainage and flooding,0,0,3,dropdown says other
+900025,E8,Millbrook Road flooding (3 reports),Drainage and flooding,0,0,2,low severity duplicate
+900026,E9,"Hill Lane lamp (same category as Westgate, FAR away: must not merge)",Street lighting,0,0,2,"same category, different place"
+900027,E10,"Woolston lamp (same category, far away)",Street lighting,0,0,2,"same category, different place"
+900028,E11,Vague reports (the model should be unsure),Other,0,0,1,"no usable detail: expect Other, low urgency"
+900029,E11,Vague reports (the model should be unsure),Other,0,0,1,photo-only report
+900030,E12,"Shirley High Street anti-social behaviour (close to the vague pair, different category)",Anti-social behaviour,0,0,3,no specific vulnerable group named
+900031,E12,"Shirley High Street anti-social behaviour (close to the vague pair, different category)",Anti-social behaviour,0,1,4,elderly person affected
+900032,E13,"Abandoned vehicle, Sholing (2 reports)",Abandoned vehicle,0,1,3,children nearby
+900033,E13,"Abandoned vehicle, Sholing (2 reports)",Abandoned vehicle,0,0,4,escalation
+900034,E14,"Missing stop sign, The Avenue (urgency 5, main road)",Road signs and markings,0,1,5,near miss is NOT an injury
+900035,E14,"Missing stop sign, The Avenue (urgency 5, main road)",Road signs and markings,0,0,4,no one named as vulnerable
+900036,E15,"Broken crossing, Shirley Road (3 reports, wheelchair/pushchair)",Road signs and markings,0,1,4,wheelchair user
+900037,E15,"Broken crossing, Shirley Road (3 reports, wheelchair/pushchair)",Road signs and markings,0,0,4,dropdown wrongly says Street lighting
+900038,E15,"Broken crossing, Shirley Road (3 reports, wheelchair/pushchair)",Road signs and markings,0,1,4,"pushchair; near miss, not injury"
+900039,E16,"Overgrown hedge, Lordshill (accessibility)",Trees and vegetation,0,1,3,accessibility
+900040,E16,"Overgrown hedge, Lordshill (accessibility)",Trees and vegetation,0,1,4,mobility scooter; dropdown differs

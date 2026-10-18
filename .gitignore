@@ -1,0 +1,25 @@
+# OS and editor files
+.DS_Store
+.claude/
+.idea/
+.vscode/
+
+# Dependencies and environments
+node_modules/
+/package-lock.json
+ml/.venv/
+__pycache__/
+*.pyc
+
+# Logs
+*.log
+
+# Image benchmark: downloaded and generated images stay local (re-create with the scripts).
+# The manifests (with each photo's author and licence), labels and results are kept.
+ml/benchmark/internet/*
+!ml/benchmark/internet/manifest.json
+ml/benchmark/variants/
+ml/benchmark/negatives/
+ml/benchmark/sheets/
+
+# counciltriage/ has its own .gitignore (build output, local database, uploads, .env*, .secrets/)

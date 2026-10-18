@@ -1,0 +1,332 @@
+{
+ "cold_load_seconds": 3.9,
+ "device": "mps",
+ "encoder": "google/siglip2-base-patch16-224",
+ "fixmystreet": {
+  "classifier": {
+   "n_in_scope": 48,
+   "n_out_of_scope": 35,
+   "accuracy": 0.5416666666666666,
+   "accuracy_adjacent": 0.8333333333333334,
+   "macro_f1": 0.3063858695652174,
+   "ece": 0.3236288853641873,
+   "error_detection_auroc": 0.43356643356643354,
+   "unclear_rate_in_scope": 0.020833333333333332,
+   "confusion": {
+    "litter": {
+     "litter": 5
+    },
+    "road_damage": {
+     "pothole": 9,
+     "litter": 4
+    },
+    "fly_tipping": {
+     "litter": 14
+    },
+    "pothole": {
+     "pothole": 12
+    },
+    "graffiti": {
+     "litter": 3
+    },
+    "bus_shelter": {
+     "litter": 1
+    }
+   },
+   "unclear_rate_out_of_scope": 0.2,
+   "out_of_scope_auroc": 0.8130952380952381
+  },
+  "zero_shot": {
+   "n_in_scope": 48,
+   "n_out_of_scope": 35,
+   "accuracy": 0.875,
+   "accuracy_adjacent": 0.9791666666666666,
+   "macro_f1": 0.8266045548654244,
+   "ece": 0.07001284882426265,
+   "error_detection_auroc": 0.8611111111111112,
+   "unclear_rate_in_scope": 0.0,
+   "confusion": {
+    "litter": {
+     "litter": 5
+    },
+    "road_damage": {
+     "pothole": 13
+    },
+    "fly_tipping": {
+     "litter": 5,
+     "fly_tipping": 9
+    },
+    "pothole": {
+     "pothole": 12
+    },
+    "graffiti": {
+     "graffiti": 3
+    },
+    "bus_shelter": {
+     "broken_lights": 1
+    }
+   },
+   "unclear_rate_out_of_scope": 0.2,
+   "out_of_scope_auroc": 0.8130952380952381
+  },
+  "ensemble": {
+   "n_in_scope": 48,
+   "n_out_of_scope": 35,
+   "accuracy": 0.7708333333333334,
+   "accuracy_adjacent": 0.9583333333333334,
+   "macro_f1": 0.6672932330827067,
+   "ece": 0.10011625611306188,
+   "error_detection_auroc": 0.7027027027027027,
+   "unclear_rate_in_scope": 0.0625,
+   "confusion": {
+    "litter": {
+     "litter": 5
+    },
+    "road_damage": {
+     "pothole": 13
+    },
+    "fly_tipping": {
+     "litter": 9,
+     "fly_tipping": 5
+    },
+    "pothole": {
+     "pothole": 12
+    },
+    "graffiti": {
+     "graffiti": 2,
+     "litter": 1
+    },
+    "bus_shelter": {
+     "litter": 1
+    }
+   },
+   "unclear_rate_out_of_scope": 0.6571428571428571,
+   "out_of_scope_auroc": 0.9154761904761904
+  }
+ },
+ "fixmystreet_labels": {
+  "bus_shelter": 1,
+  "fly_tipping": 14,
+  "graffiti": 3,
+  "litter": 5,
+  "not_a_photo": 3,
+  "other": 32,
+  "pothole": 12,
+  "road_damage": 13
+ },
+ "commons": {
+  "classifier": {
+   "n_in_scope": 64,
+   "n_out_of_scope": 0,
+   "accuracy": 0.3125,
+   "accuracy_adjacent": 0.546875,
+   "macro_f1": 0.21601779755283648,
+   "ece": 0.4723644491415242,
+   "error_detection_auroc": 0.7829545454545455,
+   "unclear_rate_in_scope": 0.046875,
+   "confusion": {
+    "graffiti": {
+     "litter": 17
+    },
+    "pothole": {
+     "litter": 5,
+     "pothole": 13
+    },
+    "litter": {
+     "litter": 7
+    },
+    "fly_tipping": {
+     "litter": 15
+    },
+    "broken_lights": {
+     "litter": 7
+    }
+   }
+  },
+  "zero_shot": {
+   "n_in_scope": 64,
+   "n_out_of_scope": 0,
+   "accuracy": 0.71875,
+   "accuracy_adjacent": 0.921875,
+   "macro_f1": 0.6582483877678386,
+   "ece": 0.19861362734809518,
+   "error_detection_auroc": 0.8768115942028986,
+   "unclear_rate_in_scope": 0.0,
+   "confusion": {
+    "graffiti": {
+     "graffiti": 17
+    },
+    "pothole": {
+     "broken_lights": 3,
+     "pothole": 15
+    },
+    "litter": {
+     "fly_tipping": 2,
+     "litter": 5
+    },
+    "fly_tipping": {
+     "litter": 11,
+     "broken_lights": 2,
+     "fly_tipping": 2
+    },
+    "broken_lights": {
+     "broken_lights": 7
+    }
+   }
+  },
+  "ensemble": {
+   "n_in_scope": 64,
+   "n_out_of_scope": 0,
+   "accuracy": 0.75,
+   "accuracy_adjacent": 0.96875,
+   "macro_f1": 0.6692857142857143,
+   "ece": 0.3180203582560901,
+   "error_detection_auroc": 0.41796875,
+   "unclear_rate_in_scope": 0.109375,
+   "confusion": {
+    "graffiti": {
+     "graffiti": 17
+    },
+    "pothole": {
+     "pothole": 17,
+     "broken_lights": 1
+    },
+    "litter": {
+     "litter": 7
+    },
+    "fly_tipping": {
+     "litter": 14,
+     "broken_lights": 1
+    },
+    "broken_lights": {
+     "broken_lights": 7
+    }
+   }
+  }
+ },
+ "commons_labels": {
+  "broken_lights": 7,
+  "fly_tipping": 15,
+  "graffiti": 17,
+  "litter": 7,
+  "pothole": 18
+ },
+ "negatives": {
+  "classifier": {
+   "n": 16,
+   "unclear_rate": 0.1875,
+   "mean_uncertainty": 0.6031422870246785
+  },
+  "zero_shot": {
+   "n": 16,
+   "unclear_rate": 0.125,
+   "mean_uncertainty": 0.3875618809500782
+  },
+  "ensemble": {
+   "n": 16,
+   "unclear_rate": 0.5625,
+   "mean_uncertainty": 0.7231078024699938
+  }
+ },
+ "all_out_of_scope_auroc": {
+  "classifier": 0.7995448179271709,
+  "zero_shot": 0.822829131652661,
+  "ensemble": 0.8846288515406162
+ },
+ "robustness": {
+  "clean": {
+   "accuracy": 0.7708333333333334,
+   "accuracy_adjacent": 0.9583333333333334,
+   "unclear_rate_in_scope": 0.0625
+  },
+  "blur": {
+   "accuracy_adjacent": 0.7708333333333334,
+   "accuracy": 0.6875,
+   "unclear_rate": 0.6666666666666666,
+   "prediction_changed": 0.3333333333333333
+  },
+  "dark": {
+   "accuracy_adjacent": 0.9375,
+   "accuracy": 0.7708333333333334,
+   "unclear_rate": 0.20833333333333334,
+   "prediction_changed": 0.125
+  },
+  "overexposed": {
+   "accuracy_adjacent": 0.9375,
+   "accuracy": 0.7291666666666666,
+   "unclear_rate": 0.14583333333333334,
+   "prediction_changed": 0.08333333333333333
+  },
+  "rotated": {
+   "accuracy_adjacent": 0.9375,
+   "accuracy": 0.75,
+   "unclear_rate": 0.14583333333333334,
+   "prediction_changed": 0.125
+  },
+  "tiny": {
+   "accuracy_adjacent": 0.8333333333333334,
+   "accuracy": 0.6875,
+   "unclear_rate": 0.4583333333333333,
+   "prediction_changed": 0.20833333333333334
+  },
+  "jpeg_q5": {
+   "accuracy_adjacent": 0.875,
+   "accuracy": 0.75,
+   "unclear_rate": 0.4375,
+   "prediction_changed": 0.16666666666666666
+  },
+  "crop_centre": {
+   "accuracy_adjacent": 0.9166666666666666,
+   "accuracy": 0.7291666666666666,
+   "unclear_rate": 0.14583333333333334,
+   "prediction_changed": 0.0625
+  }
+ },
+ "training_set_cv_accuracy": {
+  "mean": 1.0,
+  "folds": [
+   1.0,
+   1.0,
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ "severity_by_label": {
+  "litter": {
+   "medium": 3,
+   "high": 1,
+   "low": 1
+  },
+  "road_damage": {
+   "medium": 6,
+   "low": 6,
+   "high": 1
+  },
+  "fly_tipping": {
+   "medium": 7,
+   "high": 3,
+   "low": 4
+  },
+  "pothole": {
+   "medium": 7,
+   "high": 4,
+   "low": 1
+  },
+  "graffiti": {
+   "low": 3
+  },
+  "bus_shelter": {
+   "high": 1
+  }
+ },
+ "latency_ms": {
+  "device": "mps",
+  "p50": 29.907417003414594,
+  "p95": 35.56029200262856,
+  "mean": 37.1951791294494,
+  "images": 147
+ },
+ "batch16_images_per_second": 27.1,
+ "cpu_latency_ms_p50": 98.97550000459887
+}

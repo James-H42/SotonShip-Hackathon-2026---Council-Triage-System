@@ -1,0 +1,362 @@
+{
+ "model": "qwen3:4b",
+ "runAt": "2026-10-18T09:04:25.021Z",
+ "coldStartMs": 5582,
+ "latency": {
+  "p50": 2840.0889580000003,
+  "p95": 3275.129916999984,
+  "mean": 2853.766614075,
+  "max": 3634.5846250000177
+ },
+ "tokensPerSecond": 22.785910755541828,
+ "holdout": {
+  "llm": {
+   "n": 40,
+   "valid": 1,
+   "categoryExact": 0.85,
+   "categoryAdjacent": 0.85,
+   "fineLabel": 0.825,
+   "injury": {
+    "accuracy": 1,
+    "precision": 1,
+    "recall": 1
+   },
+   "vulnerable": {
+    "accuracy": 0.925,
+    "precision": 0.8888888888888888,
+    "recall": 0.8
+   },
+   "urgencyExact": 0.575,
+   "urgencyWithin1": 0.95,
+   "urgencyMAE": 0.5
+  },
+  "baseline": {
+   "n": 40,
+   "valid": 1,
+   "categoryExact": 0.8,
+   "categoryAdjacent": 0.8,
+   "fineLabel": 0,
+   "injury": {
+    "accuracy": 0.975,
+    "precision": 1,
+    "recall": 0.6666666666666666
+   },
+   "vulnerable": {
+    "accuracy": 0.975,
+    "precision": 1,
+    "recall": 0.9
+   },
+   "urgencyExact": 0.1,
+   "urgencyWithin1": 0.5,
+   "urgencyMAE": 1.7
+  }
+ },
+ "synthetic": {
+  "llm": {
+   "n": 40,
+   "valid": 1,
+   "categoryExact": 0.85,
+   "categoryAdjacent": 0.875,
+   "fineLabel": 0.775,
+   "injury": {
+    "accuracy": 1,
+    "precision": 1,
+    "recall": 1
+   },
+   "vulnerable": {
+    "accuracy": 0.95,
+    "precision": 0.9166666666666666,
+    "recall": 0.9166666666666666
+   },
+   "urgencyExact": 0.425,
+   "urgencyWithin1": 1,
+   "urgencyMAE": 0.575
+  },
+  "baseline": {
+   "n": 40,
+   "valid": 1,
+   "categoryExact": 0.825,
+   "categoryAdjacent": 0.85,
+   "fineLabel": 0,
+   "injury": {
+    "accuracy": 0.975,
+    "precision": 0.6666666666666666,
+    "recall": 1
+   },
+   "vulnerable": {
+    "accuracy": 0.95,
+    "precision": 0.9166666666666666,
+    "recall": 0.9166666666666666
+   },
+   "urgencyExact": 0.125,
+   "urgencyWithin1": 0.55,
+   "urgencyMAE": 1.525
+  }
+ },
+ "consistency": 1,
+ "robustness": {
+  "clean": {
+   "n": 20,
+   "valid": 1,
+   "categoryExact": 0.85,
+   "categoryAdjacent": 0.85,
+   "fineLabel": 0.85,
+   "injury": {
+    "accuracy": 1,
+    "precision": 1,
+    "recall": 1
+   },
+   "vulnerable": {
+    "accuracy": 0.9,
+    "precision": 1,
+    "recall": 0.6
+   },
+   "urgencyExact": 0.65,
+   "urgencyWithin1": 0.9,
+   "urgencyMAE": 0.5
+  },
+  "typos": {
+   "n": 20,
+   "valid": 1,
+   "categoryExact": 0.85,
+   "categoryAdjacent": 0.85,
+   "fineLabel": 0.85,
+   "injury": {
+    "accuracy": 0.95,
+    "precision": 1,
+    "recall": 0.5
+   },
+   "vulnerable": {
+    "accuracy": 0.9,
+    "precision": 1,
+    "recall": 0.6
+   },
+   "urgencyExact": 0.6,
+   "urgencyWithin1": 0.95,
+   "urgencyMAE": 0.55
+  },
+  "shouting": {
+   "n": 20,
+   "valid": 1,
+   "categoryExact": 0.9,
+   "categoryAdjacent": 0.9,
+   "fineLabel": 0.9,
+   "injury": {
+    "accuracy": 1,
+    "precision": 1,
+    "recall": 1
+   },
+   "vulnerable": {
+    "accuracy": 0.9,
+    "precision": 1,
+    "recall": 0.6
+   },
+   "urgencyExact": 0.25,
+   "urgencyWithin1": 0.8,
+   "urgencyMAE": 0.95
+  },
+  "textspeak": {
+   "n": 20,
+   "valid": 1,
+   "categoryExact": 0.9,
+   "categoryAdjacent": 0.9,
+   "fineLabel": 0.9,
+   "injury": {
+    "accuracy": 1,
+    "precision": 1,
+    "recall": 1
+   },
+   "vulnerable": {
+    "accuracy": 0.95,
+    "precision": 1,
+    "recall": 0.8
+   },
+   "urgencyExact": 0.65,
+   "urgencyWithin1": 0.9,
+   "urgencyMAE": 0.45
+  },
+  "padded": {
+   "n": 20,
+   "valid": 1,
+   "categoryExact": 0.95,
+   "categoryAdjacent": 1,
+   "fineLabel": 0.95,
+   "injury": {
+    "accuracy": 1,
+    "precision": 1,
+    "recall": 1
+   },
+   "vulnerable": {
+    "accuracy": 0.9,
+    "precision": 1,
+    "recall": 0.6
+   },
+   "urgencyExact": 0.55,
+   "urgencyWithin1": 0.9,
+   "urgencyMAE": 0.6
+  },
+  "injection": {
+   "n": 20,
+   "valid": 1,
+   "categoryExact": 0.85,
+   "categoryAdjacent": 0.85,
+   "fineLabel": 0.85,
+   "injury": {
+    "accuracy": 1,
+    "precision": 1,
+    "recall": 1
+   },
+   "vulnerable": {
+    "accuracy": 0.9,
+    "precision": 1,
+    "recall": 0.6
+   },
+   "urgencyExact": 0.65,
+   "urgencyWithin1": 0.9,
+   "urgencyMAE": 0.5,
+   "hijacked": 0.15
+  }
+ },
+ "merge": {
+  "pairs": 16,
+  "accuracy": 0.5625,
+  "precision": 1,
+  "recall": 0.125,
+  "latency": {
+   "p50": 709.6797500000102,
+   "p95": 1529.0277090000454,
+   "mean": 744.8214949375179,
+   "max": 1529.0277090000454
+  }
+ },
+ "errors": [
+  {
+   "id": "H11",
+   "expected": {
+    "category": "fly_tipping",
+    "injury": false,
+    "vulnerable": true,
+    "urgency": 4
+   },
+   "got": {
+    "category": "other",
+    "label": "Other",
+    "injury": false,
+    "vulnerable": true,
+    "urgency": 2
+   }
+  },
+  {
+   "id": "H14",
+   "expected": {
+    "category": "litter",
+    "injury": false,
+    "vulnerable": true,
+    "urgency": 3
+   },
+   "got": {
+    "category": "litter",
+    "label": "Litter and rubbish",
+    "injury": false,
+    "vulnerable": false,
+    "urgency": 2
+   }
+  },
+  {
+   "id": "H16",
+   "expected": {
+    "category": "litter",
+    "injury": false,
+    "vulnerable": true,
+    "urgency": 5
+   },
+   "got": {
+    "category": "other",
+    "label": "Other",
+    "injury": false,
+    "vulnerable": false,
+    "urgency": 2
+   }
+  },
+  {
+   "id": "H19",
+   "expected": {
+    "category": "vandalism",
+    "injury": false,
+    "vulnerable": false,
+    "urgency": 2
+   },
+   "got": {
+    "category": "road_pavement_damage",
+    "label": "Road or pavement damage",
+    "injury": false,
+    "vulnerable": false,
+    "urgency": 3
+   }
+  },
+  {
+   "id": "H21",
+   "expected": {
+    "category": "street_light",
+    "injury": false,
+    "vulnerable": false,
+    "urgency": 3
+   },
+   "got": {
+    "category": "street_light",
+    "label": "Street lighting",
+    "injury": false,
+    "vulnerable": true,
+    "urgency": 4
+   }
+  },
+  {
+   "id": "H33",
+   "expected": {
+    "category": "other",
+    "injury": false,
+    "vulnerable": false,
+    "urgency": 1
+   },
+   "got": {
+    "category": "vandalism",
+    "label": "Graffiti and vandalism",
+    "injury": false,
+    "vulnerable": false,
+    "urgency": 1
+   }
+  },
+  {
+   "id": "H39",
+   "expected": {
+    "category": "fly_tipping",
+    "injury": false,
+    "vulnerable": true,
+    "urgency": 3
+   },
+   "got": {
+    "category": "pothole",
+    "label": "Potholes",
+    "injury": false,
+    "vulnerable": true,
+    "urgency": 4
+   }
+  },
+  {
+   "id": "H40",
+   "expected": {
+    "category": "other",
+    "injury": false,
+    "vulnerable": true,
+    "urgency": 5
+   },
+   "got": {
+    "category": "street_light",
+    "label": "Street lighting",
+    "injury": false,
+    "vulnerable": true,
+    "urgency": 4
+   }
+  }
+ ]
+}
