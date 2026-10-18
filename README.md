@@ -8,8 +8,6 @@ risk and merges duplicates. Council officers get one prioritised, de-duplicated 
 colour-coded map and a route planner that turns the worst problems into tomorrow's work orders.
 Everything runs on a council laptop, so no report data is sent to a cloud AI service.
 
-- **Demo video (2 min 16 s, silent with captions):** [`counciltriage/docs/StreetTriage-demo.mp4`](counciltriage/docs/StreetTriage-demo.mp4)
-- **150-word summary:** [`counciltriage/docs/SUMMARY-150.md`](counciltriage/docs/SUMMARY-150.md)
 - **Full technical README:** [`counciltriage/README.md`](counciltriage/README.md)
 - **Benchmarks:** [`counciltriage/docs/BENCHMARKS.md`](counciltriage/docs/BENCHMARKS.md)
 
